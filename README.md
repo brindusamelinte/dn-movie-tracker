@@ -120,18 +120,20 @@ Recomandările le vom face pe baza informațiilor din BD.
 
 Acum să trecem la muncă.
 
-1. Deschide `README.md` în VS Code. O să verzi sursa textului în format Markdown. E chiar simpatic,
+~~✂️1. Deschide `README.md` în VS Code. O să verzi sursa textului în format Markdown. E chiar simpatic,
    dar dacă vrei să-l vezi ca și pe GitHub, apasă `Preview` din bara de sus. Acum, după ce ai
-   completat un task, ~~✂️ îl tai de aici~~.
-2. Users. Completează modelul utilizatorului cu: city, country, about, birthday (date). Completează
-   rutele pentru users cu toate metodele CRUD:
-   - întoarce toți utilizatorii
-   - adaugă un utilizator
-   - întoarce un singur utilizator
-   - modifică datele unui utilizator
-   - suprascrie un utilizator
-   - șterge un utilizator
+   completat un task, îl tai de aici.✂️~~
+   
+~~✂️2. Users. Completează modelul utilizatorului cu: city, country, about, birthday (date). Completează
+   rutele pentru users cu toate metodele CRUD:✂~~
+   ~~✂️- întoarce toți utilizatorii~~
+   ~~✂️- adaugă un utilizator~~
+   ~~✂️- întoarce un singur utilizator~~
+   ~~✂️- modifică datele unui utilizator~~
+   ~~✂️- suprascrie un utilizator~~
+   ~~✂️- șterge un utilizator ~~
      > Pentru a identifica utilizatorul, folosește adresa de email
+    
 3. Movies. Completează rutele pentru filme:
    - întoarce un singur film - mai întâi verifici dacă filmul există în BD, dacă nu, îl descarci de
      pe TMDB și-l salvezi în BD, apoi îl returnezi. Acest pas intermediar, va popula BD cu filmele
