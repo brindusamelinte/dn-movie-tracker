@@ -149,8 +149,9 @@ Acum să trecem la muncă.
    toate filmele favorite ale unui utilizator (nu doar ID, ci și titlu, an, gen, etc..), pentru a
    verifica dacă un film este în lista de favorite ale unui utilizator.✂~~
 
-5. Watch history. Istoricul ar trebui să fie asemănător cu filmele favorite, cu diferența că data
-   când a fost privit, să poată fi modificată manual.
+~~✂️5. Watch history. Istoricul ar trebui să fie asemănător cu filmele favorite, cu diferența că data
+   când a fost privit, să poată fi modificată manual.✂~~
+   
 6. Favorite movie genres. O listă cu genurile favorite ale utilizatorului. Trebuie să fie
    asemănătoare ca și funcționalitate cu filmele favorite, doar că aici vom pune doar genul
    filmului. Ne vom folosi de aceste date mai târziu, când vom lucra la recomandări.

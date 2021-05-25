@@ -19,7 +19,7 @@ router.get('/:email', async (req, res) => {
        }
        res.send(movies);
     } else {
-        res.status(404).send('No favorites movies found.')
+        res.status(404).send('No favorites movies found.');
     }
 });
 
@@ -67,7 +67,7 @@ router.delete('/:movieId/:email', async (req, res) => {
         movieId: req.params.movieId,
         email: req.params.email
     });
-    console.log(favorite);
+    //console.log(favorite);
     if(favorite) {
         const movieDeleted = await favorite.deleteOne();
         res.send(`Favorite movie with ${favorite.movieId} was deleted.`);
