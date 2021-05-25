@@ -3,6 +3,7 @@ const path = require('path');
 const db = require('./db');
 const movies = require('./routes/movies');
 const users = require('./routes/users');
+const favorites = require('./routes/favorites');
 require('dotenv').config(); // import .env and set global var process.env with it values
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json()); // let us use request body as json
 // Here add more routes
 app.use('/api/movies', movies);
 app.use('/api/users', users);
+app.use('/api/favorites', favorites);
 app.use('/api', (req, res) => res.status(404).send('API not found')); // show 404 if api is not defined above
 
 // Our backend is simple: if it's an static file we serve it, if it starts with /api we call api router, else, this means this route doesn't exist or it's an UI route. In that case, we redirect to index.html so the user will end up with loading the UI

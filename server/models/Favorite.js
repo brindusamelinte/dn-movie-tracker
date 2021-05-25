@@ -6,4 +6,4 @@ const schema = new mongoose.Schema({
     date: { type: Date, required: true }
 });
 
-module.export = mongoose.model('Favorite', schema);
+module.exports = mongoose.model('Favorite', schema);

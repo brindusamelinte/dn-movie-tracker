@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
     });
     res.send(user);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     if(!req.body.email) {
       res.status(400).send(`${error._message}. Your email is required.`);
     } else {
