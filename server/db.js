@@ -6,6 +6,7 @@ const init = () => {
   const pass = encodeURIComponent(process.env.mongoPass);
   const url = process.env.mongoUrl;
   const db = process.env.mongoDb;
+  
   mongoose.connect(`mongodb+srv://${user}:${pass}@${url}/${db}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
