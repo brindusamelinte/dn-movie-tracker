@@ -132,7 +132,7 @@ Acum să trecem la muncă.
    ~~✂️- modifică datele unui utilizator~~
    ~~✂️- suprascrie un utilizator~~
    ~~✂️- șterge un utilizator ~~
-     > Pentru a identifica utilizatorul, folosește adresa de email
+      ~~✂️> Pentru a identifica utilizatorul, folosește adresa de email~~
     
 ~~✂️3. Movies. Completează rutele pentru filme:✂~~
    ~~✂️- întoarce un singur film - mai întâi verifici dacă filmul există în BD, dacă nu, îl descarci de
@@ -152,9 +152,9 @@ Acum să trecem la muncă.
 ~~✂️5. Watch history. Istoricul ar trebui să fie asemănător cu filmele favorite, cu diferența că data
    când a fost privit, să poată fi modificată manual.✂~~
    
-6. Favorite movie genres. O listă cu genurile favorite ale utilizatorului. Trebuie să fie
+~~✂️6. Favorite movie genres. O listă cu genurile favorite ale utilizatorului. Trebuie să fie
    asemănătoare ca și funcționalitate cu filmele favorite, doar că aici vom pune doar genul
-   filmului. Ne vom folosi de aceste date mai târziu, când vom lucra la recomandări.
+   filmului. Ne vom folosi de aceste date mai târziu, când vom lucra la recomandări.✂~~
 
 ## După ce ai terminat sarcinile,
 

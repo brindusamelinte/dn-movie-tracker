@@ -12,9 +12,11 @@ const init = () => {
     useUnifiedTopology: true,
     useFindAndModify: false,
   });
+
   mongoose.connection.on('error', error =>
     console.error('Connection to MongoDB failed with error:', error),
   );
+  
   mongoose.connection.once('open', () => console.log('Connected to MongoDB'));
 };
 

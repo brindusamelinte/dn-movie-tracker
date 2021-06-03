@@ -6,33 +6,25 @@ const Movie = require('../models/Movie');
 const router = express.Router();
 
 router.get('/:email', async (req, res) => {
-    const history = await History.find({ email: req.params.email });
-
-    if(history.length > 0) {
-        const movies = [];
-        for(let i=0; i < history.length; i++) {
-            const movie = await Movie.findOne({ movieId: history[i].movieId});
-            if(movie !== null) {
-                movies.push(movie);
-            }
-        }
-        res.send(movies);
-    } else {
-        res.status(404).send('There is no movie in your history.');
-    }
+    History
+        .find({ email: req.params.email })
+        .populate('movie')
+        .then(histories => {
+            const historyMovies = histories.map(history => history.movie);
+            res.send(historyMovies);
+        })
 });
 
+
 router.get('/:movieId/:email', async (req, res) => {
-    const movie = await History.findOne({
+    const isHistory = await History.exists({
         movieId: req.params.movieId,
         email: req.params.email,
     });
-    if(movie) {
-        res.send(true);
-    } else {
-        res.send(false);
-    }
+
+    res.send(isHistory);    
 });
+
 
 router.post('/', async (req, res) => {
     try {
@@ -40,12 +32,19 @@ router.post('/', async (req, res) => {
             movieId: req.body.movieId,
             email: req.body.email
         });
-
+        
         if(!history) {
+            const movie = await Movie.findOne({ movieId: req.body.movieId });
+            if(!movie) {
+                res.status(404).send('Movie not found in db.');
+                return;
+            }
+
             const historyMovie = await History.create({
                 movieId: req.body.movieId,
                 email: req.body.email,
-                date: req.body.date
+                date: req.body.date,
+                movie: movie._id
             });
             res.send(historyMovie);
         } else if(req.body.date) {
@@ -68,18 +67,18 @@ router.post('/', async (req, res) => {
     }
 });
 
+
 router.delete('/:movieId/:email', async (req, res) => {
-    const movie = await History.findOne({
+    await History.findOneAndDelete({
         movieId: req.params.movieId,
         email: req.params.email
+    }, (err, doc) => {
+        if(doc) {
+            res.send(`The movie with id ${doc.movieId} was deleted from history.`);
+        } else {
+            res.status(404).send('Movie not found in your history!');
+        }
     });
-
-    if(movie) {
-        const movieDeleted = await movie.deleteOne();
-        res.send(`The movie with id ${movie.movieId} was deleted from history.`);
-    } else {
-        res.status(404).send('Movie not found in your history.');
-    }
 });
 
 module.exports = router;

@@ -23,7 +23,6 @@ router.get('/:movieId', async (req, res) => {
     const url = tmdb.getMovieUrl(req.params.movieId);
   
     const checkStatus = res => {
-      //console.log(res);
       if(res.success === false) {
         throw res.status_message;
       }
@@ -33,16 +32,13 @@ router.get('/:movieId', async (req, res) => {
     fetch(url, {method: 'GET', headers: { 'Content-Type': 'application/json' }})
       .then(res => res.json())
       .then(checkStatus)
-      .then(async(jsonResp) =>  {
-        const movie = await Movie.create({
-            movieId: jsonResp.id,
-            name: jsonResp.title,
-            year: new Date(jsonResp.release_date).getFullYear()
-          });
-        res.send(movie);
-      })
+      .then(jsonResp => Movie.create({
+          movieId: jsonResp.id,
+          name: jsonResp.title,
+          year: new Date(jsonResp.release_date).getFullYear()
+      }))
+      .then(movie => res.send(movie))
       .catch(error => {
-        //console.log('Error', error)
         res.status(404).send(error);
       });  
   }

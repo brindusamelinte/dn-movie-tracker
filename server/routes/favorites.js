@@ -7,33 +7,23 @@ const Movie = require('../models/Movie');
 const router = express.Router();
 
 router.get('/:email', async (req, res) => {
-    const favorites = await Favorite.find({ email: req.params.email});    
-
-    if(favorites.length > 0) {
-       const movies = [];
-       for(let i=0; i<favorites.length; i++) {
-            const movie = await Movie.findOne({ movieId: favorites[i].movieId });
-            if(movie !== null) {
-                movies.push(movie);
-            }
-       }
-       res.send(movies);
-    } else {
-        res.status(404).send('No favorites movies found.');
-    }
+    Favorite
+        .find({ email: req.params.email})
+        .populate('movie')
+        .then(favorites => {
+            const favoriteMovies = favorites.map(favorite => favorite.movie)
+            res.send(favoriteMovies);
+        })
 });
 
 
 router.get('/:movieId/:email', async (req, res) => {
-    const favorite = await Favorite.findOne({ 
+    const isFavorite = await Favorite.exists({ 
         movieId: req.params.movieId,
         email: req.params.email
     });
-    if(favorite) {
-        res.send(true);
-    } else {
-        res.send(false);
-    }
+
+    res.send(isFavorite);
 }); 
 
 
@@ -45,35 +35,39 @@ router.post('/', async (req, res) => {
         });
 
         if(!favorite) {
+            const movie = await Movie.findOne({movieId: req.body.movieId});
+            if(!movie) {
+                res.status(404).send('Movie not found in db.');
+                return;
+            }
+
             const favoriteMovie = await Favorite.create({
                 movieId: req.body.movieId,
                 email: req.body.email,
-                date: new Date()
+                date: new Date(),
+                movie: movie._id
             });
             res.send(favoriteMovie);
         } else {
             res.status(409).send('This movie already exists in your favorites.');
         }
-       
     } catch (error) {
-        //console.log(error);
         res.status(404).send(error);
     }
 });
 
 
 router.delete('/:movieId/:email', async (req, res) => {
-    const favorite = await Favorite.findOne({ 
+    await Favorite.findOneAndDelete({ 
         movieId: req.params.movieId,
         email: req.params.email
+    }, (err, doc) => {
+        if(doc) {
+            res.send(`Favorite movie with id ${doc.movieId} was deleted.`);
+        } else {
+            res.status(404).send('Favorite movie not found!');
+        }
     });
-    //console.log(favorite);
-    if(favorite) {
-        const movieDeleted = await favorite.deleteOne();
-        res.send(`Favorite movie with ${favorite.movieId} was deleted.`);
-    } else {
-        res.status(404).send('Favorite movie not found!');
-    }
 });
 
 module.exports = router;

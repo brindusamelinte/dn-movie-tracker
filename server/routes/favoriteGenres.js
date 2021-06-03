@@ -14,6 +14,7 @@ router.get('/:email', async (req, res) => {
     }
 });
 
+
 router.post('/', async (req, res) => {
     try {
         const favoriteGenre = await FavoriteGenres.findOne({
@@ -35,18 +36,19 @@ router.post('/', async (req, res) => {
     }
 });
 
+
 router.delete('/:email/:genreId', async (req, res) => {
-    const favoriteGenre = await FavoriteGenres.findOne({
+    await FavoriteGenres.findOneAndDelete({
         email: req.params.email,
         genreId: req.params.genreId
+    }, (err, doc) => {
+        console.log(doc)
+        if(doc) {
+            res.send(`Favorite genre with id ${doc.genreId} was deleted.`);
+        } else {
+            res.status(404).send('Genre not found!');
+        }
     });
-
-    if(favoriteGenre) {
-        const genreDeleted = await favoriteGenre.deleteOne();
-        res.send(genreDeleted);
-    } else {
-        res.status(404).send('Genres not found.');
-    }
 });
 
 
