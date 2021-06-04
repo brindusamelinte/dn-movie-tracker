@@ -13,3 +13,5 @@ export const WATCHLIST = {
 // keep track of all routes of our API. You can use functions if you need to add some strings inside the URL (check tmdb.js for an example)
 export const MOVIES_URL = `${URL}/movies`;
 export const WATCHLIST_URL = `${URL}/watchlist`;
+
+export const buildSearchMovieApiUrl = terms => `${URL}/movies/search/${terms}`;
