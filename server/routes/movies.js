@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:movieId', async (req, res) => {
   const movie = await Movie.findOne({ movieId: req.params.movieId });
- 
+  
   if(movie) {
     res.send(movie);
   } else {
@@ -35,7 +35,19 @@ router.get('/:movieId', async (req, res) => {
       .then(jsonResp => Movie.create({
           movieId: jsonResp.id,
           name: jsonResp.title,
-          year: new Date(jsonResp.release_date).getFullYear()
+          year: new Date(jsonResp.release_date).getFullYear(),
+          posterPath: jsonResp.poster_path,
+          imdbId: jsonResp.imdb_id,
+          title: jsonResp.title,
+          originalLanguage: jsonResp.original_language,
+          runtime: jsonResp.runtime,
+          genres: jsonResp.genres.map(genre => genre.name),
+          tagline: jsonResp.tagline,
+          overview: jsonResp.overview,
+          homepage: jsonResp.homepage,
+          status: jsonResp.status,
+          budget: jsonResp.budget,
+          revenue: jsonResp.revenue
       }))
       .then(movie => res.send(movie))
       .catch(error => {

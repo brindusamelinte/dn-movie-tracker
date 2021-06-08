@@ -169,12 +169,14 @@ Acum să trecem la muncă.
 
 ## Sarcini pentru UI (React)
 
-7. Completează pagina Search cu mai multe informații (popularitatea, ratingul, posterul, orice
+~~✂️7. Completează pagina Search cu mai multe informații (popularitatea, ratingul, posterul, orice
    altceva ți se pare interesant). Adaptează design-ul. înlocuiește call-ul către TMDB cu unul către
-   API-ul propriu (cel scris în express)
-8. Completeaza pagina unui film cu mai multe informații (backdrop, genres, link to imdb, durata,
+   API-ul propriu (cel scris în express)✂~~
+   
+~~✂️8. Completeaza pagina unui film cu mai multe informații (backdrop, genres, link to imdb, durata,
    profit, rating, orice altceva ți se pare interesant). Adaptează design-ul. înlocuiește call-ul
-   către TMDB cu unul către API-ul propriu
+   către TMDB cu unul către API-ul propriu)✂~~
+   
 9. Pe pagina unui film există 2 acțiuni - adaugă la favorite și adaugă în istoric. Prima este deja
    implementată, dar trebuie legată de ruta corespunzătoare. A doua acțiune trebuie să o
    implementezi tu (adaugă în istoric, care la click, face un request către server, care va salva
