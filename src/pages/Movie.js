@@ -19,13 +19,14 @@ import { buildImageUrl, imageFallback, buildMovieUrl, buildMovieCreditsUrl } fro
 import { getYear } from '../utils';
 import { buildMovieApiUrl } from '../connectors/api';
 import WatchlistButton from '../components/WatchlistButton';
+import HistoryButton from '../components/HistoryButton';  
 import Cast from "../components/Cast";
 
 
 export default function Movie() {
   const { movieId } = useParams();
   const history = useHistory();
-  const [isHistoryActive, setHistoryActive] = React.useState(false); // temp state, for UI only, should be removed when implemented properly
+  // const [isHistoryActive, setHistoryActive] = React.useState(false); // temp state, for UI only, should be removed when implemented properly
 
   const {
     data: movie,
@@ -74,13 +75,14 @@ export default function Movie() {
           />
           <HStack>
             <WatchlistButton movie={movie} />
-            <IconButton
+            <HistoryButton movie={movie} />
+            {/* <IconButton
               aria-label={isHistoryActive ? 'Remove from history' : 'Mark as watched'}
               icon={isHistoryActive ? <CheckIcon /> : <AddIcon />}
               colorScheme="teal"
               variant={isHistoryActive ? 'solid' : 'outline'}
               onClick={() => setHistoryActive(a => !a)}
-            />
+            /> */}
           </HStack>
         </HStack>
         <Box p={6} color="white" background="teal" display="flex" justifyContent="center" flexDir="row" flexWrap="wrap">

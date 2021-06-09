@@ -57,8 +57,8 @@ router.post('/', async (req, res) => {
 });
 
 
-router.delete('/:movieId/:email', async (req, res) => {
-    await Favorite.findOneAndDelete({ 
+router.delete('/:movieId/:email', (req, res) => {
+    Favorite.findOneAndDelete({ 
         movieId: req.params.movieId,
         email: req.params.email
     }, (err, doc) => {

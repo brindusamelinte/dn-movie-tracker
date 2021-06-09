@@ -68,8 +68,8 @@ router.post('/', async (req, res) => {
 });
 
 
-router.delete('/:movieId/:email', async (req, res) => {
-    await History.findOneAndDelete({
+router.delete('/:movieId/:email', (req, res) => {
+    History.findOneAndDelete({
         movieId: req.params.movieId,
         email: req.params.email
     }, (err, doc) => {

@@ -22,3 +22,6 @@ export const buildIsFavoriteApiUrl = (movieId, email= EMAIL) => `${URL}/favorite
 export const buildAddFavoriteApiUrl = () => `${URL}/favorites`;
 export const buildFavoritesApiUrl =(email= EMAIL) => `${URL}/favorites/${email}`;
 
+export const buildIsHistoryApiUrl = (movieId, email= EMAIL) => `${URL}/history/${movieId}/${email}`;
+export const buildAddHistoryApiUrl = () => `${URL}/history`;
+export const buildHistoryApiUrl =(email= EMAIL) => `${URL}/history/${email}`;

@@ -177,10 +177,11 @@ Acum să trecem la muncă.
    profit, rating, orice altceva ți se pare interesant). Adaptează design-ul. înlocuiește call-ul
    către TMDB cu unul către API-ul propriu)✂~~
    
-9. Pe pagina unui film există 2 acțiuni - adaugă la favorite și adaugă în istoric. Prima este deja
+~~✂️9. Pe pagina unui film există 2 acțiuni - adaugă la favorite și adaugă în istoric. Prima este deja
    implementată, dar trebuie legată de ruta corespunzătoare. A doua acțiune trebuie să o
    implementezi tu (adaugă în istoric, care la click, face un request către server, care va salva
-   starea nouă în BD, asemănător cu istoricul)
+   starea nouă în BD, asemănător cu istoricul)✂~~
+   
 10. Acum că avem funcționalitatea de a adăuga în istoric, să o îmbunătățim cu data când a fost
     salvat. Și dacă utilizatorul a privit filmul în altă zi? Pentru asta mai adaugă și opțiunea de a
     schimba data. Oare putem privi un film care încă nu a fost lansat?
