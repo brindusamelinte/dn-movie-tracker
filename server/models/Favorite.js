@@ -7,7 +7,7 @@ const schema = new mongoose.Schema({
     movie: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Movie"
-    }
+    },
 });
 
 module.exports = mongoose.model('Favorite', schema);

@@ -15,7 +15,8 @@ const schema = new mongoose.Schema({
   homepage: String,
   status: String,
   budget: Number,
-  revenue: Number
+  revenue: Number,
+  voteAverage: Number,
 });
 
 module.exports = mongoose.model('Movie', schema);

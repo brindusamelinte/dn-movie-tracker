@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
                 movieId: req.body.movieId,
                 email: req.body.email,
                 date: new Date(),
-                movie: movie._id
+                movie: movie._id,
             });
             res.send(favoriteMovie);
         } else {

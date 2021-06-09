@@ -3,6 +3,7 @@ const express = require('express');
 const Movie = require('../models/Movie');
 const tmdb = require('../tmdb');
 const fetch = require('node-fetch');
+const { json } = require('express');
 
 const router = express.Router();
 
@@ -47,7 +48,8 @@ router.get('/:movieId', async (req, res) => {
           homepage: jsonResp.homepage,
           status: jsonResp.status,
           budget: jsonResp.budget,
-          revenue: jsonResp.revenue
+          revenue: jsonResp.revenue,
+          voteAverage: jsonResp.vote_average,
       }))
       .then(movie => res.send(movie))
       .catch(error => {

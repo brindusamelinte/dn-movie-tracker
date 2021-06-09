@@ -17,9 +17,10 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { buildImageUrl, imageFallback, buildMovieUrl, buildMovieCreditsUrl } from '../connectors/tmdb';
 import { getYear } from '../utils';
+import { buildMovieApiUrl } from '../connectors/api';
 import WatchlistButton from '../components/WatchlistButton';
 import Cast from "../components/Cast";
-import { buildMovieApiUrl } from '../connectors/api';
+
 
 export default function Movie() {
   const { movieId } = useParams();

@@ -27,7 +27,7 @@ export default function Cast() {
     isError,
   } = useQuery(['credits', movieId], () => fetch(buildMovieCreditsUrl(movieId)).then(r => r.json()));
 
-  console.log(credits);
+  //console.log(credits);
 
   if (isIdle || isLoading) {
     return (
