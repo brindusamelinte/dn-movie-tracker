@@ -17,7 +17,12 @@ import {
   Flex,
   useEditableControls,
   ButtonGroup,
-  Heading
+  Button,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuOptionGroup,
+  MenuItemOption
 } from '@chakra-ui/react';
 import { ChevronLeftIcon, EditIcon, CheckIcon, CloseIcon } from '@chakra-ui/icons';
 import { useHistory } from 'react-router-dom';
@@ -29,7 +34,7 @@ import { useQuery } from 'react-query';
 export default function History() {
   const history = useHistory();
 
-  const [startDate, setStartDate] = React.useState(new Date());
+  const [order, setOrder] = React.useState('asc');
 
   const { 
     data: movies, 
@@ -39,7 +44,7 @@ export default function History() {
     isError 
   } = useQuery('histories', () => fetch(buildHistoryApiUrl()).then(r => r.json()));
 
-  console.log(movies);
+  // console.log(movies);
 
   if (isIdle) {
     return null;
@@ -78,7 +83,7 @@ export default function History() {
         <IconButton mx={2} size="xs" icon={<EditIcon />} {...getEditButtonProps()} />
     )
   }
-
+  console.log(order);
   return (
     <Container p={3} maxW="80em">
       <HStack mb={3} justify="space-between">
@@ -90,9 +95,30 @@ export default function History() {
           colorScheme="teal"
           onClick={history.goBack}
         />
+        <Menu closeOnSelect={false}>
+          <MenuButton as={Button} colorScheme="teal">
+            Sort
+          </MenuButton>
+          <MenuList minWidth="240px">
+            <MenuOptionGroup onChange={sortOrder => setOrder(sortOrder)} defaultValue="asc" title="Order" type="radio">
+              <MenuItemOption value="asc">Ascending</MenuItemOption>
+              <MenuItemOption value="desc">Descending</MenuItemOption>
+            </MenuOptionGroup>
+          </MenuList>
+        </Menu>
       </HStack>
       <VStack divider={<StackDivider borderColor="gray.300" />} spacing={4} align="stretch">
-        {movies.map(movie => (
+        {movies.sort((x,y) => {
+          const a = Date.parse(x.watchAt);
+          const b = Date.parse(y.watchAt);
+          if(order === 'asc') {
+            if(a < b) return -1;
+            else return 1;
+          } else {
+            if(a < b) return 1;
+            else return -1;
+          }
+        }).map(movie => (
           <Box display="flex" flexDir="row">
             <Tooltip label={`"${movie.tagline }"`}>
               <Image
@@ -108,7 +134,7 @@ export default function History() {
               <Text color="GrayText">({movie.year})- {movie.status}</Text>
               <Flex flexDir="column" alignItems="flex-end">
                 <Text>Watched:</Text>
-                <Editable textAlign="center" defaultValue={movie.watchAt} fontSize="md" isPreviewFocusable={false}>
+                <Editable textAlign="center" defaultValue={movie.watchAt} key={movie.movieId} fontSize="md" isPreviewFocusable={false}>
                   <EditablePreview />
                   <EditableInput />
                   <EditableControls />

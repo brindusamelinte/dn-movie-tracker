@@ -187,8 +187,9 @@ Acum să trecem la muncă.
     schimba data. Oare putem privi un film care încă nu a fost lansat?
     ✂~~
     
-11. Afișează istoricul în pagina corespunzătoare. Poți să te inspiri de la pagina de favorite, dar
+~~✂️11. Afișează istoricul în pagina corespunzătoare. Poți să te inspiri de la pagina de favorite, dar
     să modifici design-ul. Iar pentru sortare, ne vom folosi de data când a fost privit
+    ✂~~
 
 12. Implementează funcția de recomandări filme - afișează 3 filme random din lista de favorite. O să
     ai nevoie de un buton de actualizare listă, în caz că utilizatorului nu-i plac recomandările. Nu
