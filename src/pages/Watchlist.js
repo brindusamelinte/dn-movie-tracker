@@ -15,9 +15,8 @@ import {
 import { ChevronLeftIcon } from '@chakra-ui/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { buildImageUrl, imageFallback } from '../connectors/tmdb';
-import { WATCHLIST_URL } from '../connectors/api';
-import { useQuery } from 'react-query';
 import { buildFavoritesApiUrl } from '../connectors/api';
+import { useQuery } from 'react-query';
 
 
 export default function Watchlist() {
@@ -80,9 +79,8 @@ export default function Watchlist() {
               </Badge>
               <Tooltip label={movie.title}>
                 <Image
-                  src={buildImageUrl(movie.posterPath, 'w45')}
+                  src={buildImageUrl(movie.posterPath, 'w92')}
                   alt="Poster"
-                  w="20vw"
                   borderWidth="1px" 
                   borderRadius="lg"
                   fallbackSrc={imageFallback}

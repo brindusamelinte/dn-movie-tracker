@@ -48,7 +48,6 @@ export default function Cast() {
 
   return (
     <Container p={3} maxW="70vw">
-      
       <Heading as="h3" size="lg" py={4}>Top Billed Cast</Heading>
       <SimpleGrid columns={6} spacing="50px">
         {credits.cast.slice(0, 6).map(cast => (

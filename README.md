@@ -182,11 +182,14 @@ Acum să trecem la muncă.
    implementezi tu (adaugă în istoric, care la click, face un request către server, care va salva
    starea nouă în BD, asemănător cu istoricul)✂~~
    
-10. Acum că avem funcționalitatea de a adăuga în istoric, să o îmbunătățim cu data când a fost
+~~✂️10. Acum că avem funcționalitatea de a adăuga în istoric, să o îmbunătățim cu data când a fost
     salvat. Și dacă utilizatorul a privit filmul în altă zi? Pentru asta mai adaugă și opțiunea de a
     schimba data. Oare putem privi un film care încă nu a fost lansat?
+    ✂~~
+    
 11. Afișează istoricul în pagina corespunzătoare. Poți să te inspiri de la pagina de favorite, dar
     să modifici design-ul. Iar pentru sortare, ne vom folosi de data când a fost privit
+
 12. Implementează funcția de recomandări filme - afișează 3 filme random din lista de favorite. O să
     ai nevoie de un buton de actualizare listă, în caz că utilizatorului nu-i plac recomandările. Nu
     afișa filmele favorite deja privite. Lasă utilizatorul să poată șterge un film din favorite

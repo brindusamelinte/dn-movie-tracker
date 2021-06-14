@@ -16,6 +16,7 @@ export const MOVIES_URL = `${URL}/movies`;
 export const WATCHLIST_URL = `${URL}/watchlist`;
 
 export const buildSearchMovieApiUrl = terms => `${URL}/movies/search/${terms}`;
+
 export const buildMovieApiUrl = movieId => `${URL}/movies/${movieId}`;
 
 export const buildIsFavoriteApiUrl = (movieId, email= EMAIL) => `${URL}/favorites/${movieId}/${email}`;

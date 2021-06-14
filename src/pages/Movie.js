@@ -76,13 +76,6 @@ export default function Movie() {
           <HStack>
             <WatchlistButton movie={movie} />
             <HistoryButton movie={movie} />
-            {/* <IconButton
-              aria-label={isHistoryActive ? 'Remove from history' : 'Mark as watched'}
-              icon={isHistoryActive ? <CheckIcon /> : <AddIcon />}
-              colorScheme="teal"
-              variant={isHistoryActive ? 'solid' : 'outline'}
-              onClick={() => setHistoryActive(a => !a)}
-            /> */}
           </HStack>
         </HStack>
         <Box p={6} color="white" background="teal" display="flex" justifyContent="center" flexDir="row" flexWrap="wrap">
