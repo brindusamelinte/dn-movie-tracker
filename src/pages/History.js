@@ -34,7 +34,7 @@ import { useQuery } from 'react-query';
 export default function History() {
   const history = useHistory();
 
-  const [order, setOrder] = React.useState('asc');
+  const [order, setOrder] = React.useState('asc');  
 
   const { 
     data: movies, 
@@ -83,7 +83,7 @@ export default function History() {
         <IconButton mx={2} size="xs" icon={<EditIcon />} {...getEditButtonProps()} />
     )
   }
-  console.log(order);
+  // console.log(order);
   return (
     <Container p={3} maxW="80em">
       <HStack mb={3} justify="space-between">

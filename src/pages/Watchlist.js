@@ -12,25 +12,70 @@ import {
   HStack,
   IconButton
 } from '@chakra-ui/react';
-import { ChevronLeftIcon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, DeleteIcon } from '@chakra-ui/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { buildImageUrl, imageFallback } from '../connectors/tmdb';
 import { buildFavoritesApiUrl } from '../connectors/api';
 import { useQuery } from 'react-query';
+import { buildIsFavoriteApiUrl } from '../connectors/api';
+import { generateConfig } from '../utils';
 
 
-export default function Watchlist() {
+export default function Watchlist(props) {
   const history = useHistory();
 
+  const [selected, setSelected] = React.useState([]);
+
+  // const [deleteFavorite, setDeleteFavorite] = React.useState("false");
+
+  const selectMovies = (movies) => {
+    if(props.recommended === "true") {
+      const unwatchedMovies = movies.filter(movie => {
+        return props.watchedMovies.indexOf(movie.movieId) === -1; 
+      });  
+
+      const movieCopy = [...unwatchedMovies];
+
+      const randomMovies = [];
+
+      for(let i=0; i<3; i++) {
+        const randomIndex = Math.floor(Math.random() * movieCopy.length);
+        if(movieCopy.length === 0) {
+          break;
+        } else {
+          randomMovies.push(movieCopy[randomIndex]);
+          movieCopy.splice(randomIndex, 1);
+        }
+      }
+      setSelected(randomMovies);
+    } else {
+      setSelected([...movies]);
+    }
+  }
+
+  const deleteMovie = (movie, id) => {
+    const movies = [...selected];
+    const moviesNotDeleted = movies.filter(movie => movie.movieId !== id);
+    setSelected(moviesNotDeleted);
+    const responseDel = fetch(buildIsFavoriteApiUrl(movie.movieId), generateConfig('DELETE'));
+  }
+ 
   const { 
     data: movies, 
     error, 
     isIdle, 
     isLoading, 
     isError 
-  } = useQuery('favorites', () => fetch(buildFavoritesApiUrl()).then(r => r.json()));
+  } = useQuery(
+    'favorites', 
+    () => fetch(buildFavoritesApiUrl())
+      .then(r => r.json()),
+    {
+      onSuccess: selectMovies
+    }
+  );
 
-  //console.log(movies);
+  // console.log(movies);
 
   if (isIdle) {
     return null;
@@ -58,6 +103,28 @@ export default function Watchlist() {
     return `${h}h ${m}min`;
   }
 
+  // React.useEffect(() => {
+  //   if(props.recommended === "true") {
+  //     const movieCopy = [...movies];
+  //     const randomMovies = [];
+  //     for(let i=0; i<3; i++) {
+  //       const randomIndex = Math.floor(Math.random() * movieCopy.length);
+  //       if(movieCopy.length === 0) {
+  //         break;
+  //       } else {
+  //         randomMovies.push(movieCopy[randomIndex]);
+  //         movieCopy.splice(randomIndex, 1);
+  //       }
+  //     }
+  //     setSelected(randomMovies);
+  //   } else {
+      // movies.forEach(movie => selected.push(movie));
+      // console.log("here");
+      // setSelected([...movies]);
+    // }
+  // }, [movies]);
+  
+
   return (
     <Container p={3} maxW="80em">
       <HStack mb={3} justify="space-between">
@@ -70,11 +137,11 @@ export default function Watchlist() {
             onClick={history.goBack}
           />
         </HStack>
-      <SimpleGrid minChildWidth={150} spacing={30}>
-        {movies.map(movie => (
+      <SimpleGrid minChildWidth={200} spacing={30}>
+        {selected.map(movie => (
           <Box p={2}>
             <Box as={Link} to={`/movies/${movie.movieId}`} key={movie.id} pos="relative" noOfLines={2}>
-              <Badge p={2} variant="solid" borderWidth="1px" borderRadius="md" colorScheme="teal" pos="absolute" top={2} left={2}>
+              <Badge p={1} variant="solid" borderWidth="1px" borderRadius="md" colorScheme="teal" pos="absolute" top={2} left={2}>
                 {convertTime(movie.runtime)}
               </Badge>
               <Tooltip label={movie.title}>
@@ -86,6 +153,11 @@ export default function Watchlist() {
                   fallbackSrc={imageFallback}
                 />
               </Tooltip>
+            </Box>
+            <Box pb={10}>
+              <Box position="relative">
+                <IconButton onClick={() => deleteMovie(movie, movie.movieId)} aria-label="Delete Favorite" colorScheme="teal" icon={<DeleteIcon />} pos="absolute" top={2} right={2} />
+              </Box>
             </Box>
             <Box py={4} fontWeight="semibold">
               <Text as="span">{movie.title} </Text>
