@@ -83,6 +83,9 @@ export default function History(props) {
         <IconButton mx={2} size="xs" icon={<EditIcon />} {...getEditButtonProps()} />
     )
   }
+
+  const limitH = props.limitH ? props.limitH : movies.length;
+
   // console.log(order);
   return (
     <Container p={3} maxW="80em">
@@ -120,7 +123,7 @@ export default function History(props) {
             if(a < b) return 1;
             else return -1;
           }
-        }).map(movie => (
+        }).slice(0, limitH).map(movie => (
           <Box display="flex" flexDir="row">
             <Tooltip label={`"${movie.tagline }"`}>
               <Image

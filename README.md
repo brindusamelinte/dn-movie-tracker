@@ -196,11 +196,11 @@ Acum să trecem la muncă.
     afișa filmele favorite deja privite. Lasă utilizatorul să poată șterge un film din favorite
     direct din această pagină.✂~~
    
-13. Completează homepage-ul cu o căutare rapidă (câmpul de căutare și 3 filme/seriale), ultimele 3
+~~✂️13. Completează homepage-ul cu o căutare rapidă (câmpul de căutare și 3 filme/seriale), ultimele 3
     privite, ultimele 3 favorite, o recomandare cu un singur film. Poți refolosi bucăți de UI prin
     componente, sunt ca funcțiile, doar că pentru UI. Dacă nu știi cum să afișezi informațiile, eu
     aș împărți pagina în 2: în dreapta afișez recomandarea cu ce să privești, iar în stânga, una sub
-    alta: search, watchlist, history. Provocarea e să arate bine.
+    alta: search, watchlist, history. Provocarea e să arate bine.✂~~
 
 ## După ce ai terminat sarcinile,
 

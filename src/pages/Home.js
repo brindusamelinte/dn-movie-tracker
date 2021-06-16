@@ -18,11 +18,11 @@ export default function Home() {
             <Text mt={2} fontSize="2xl" color="teal">Discover movies and explore now.</Text>
             <Search />
           </Box>
-          <Box mb={8}>
+          <Box mb={8} pt={8} borderTopColor="teal" borderTopWidth="1px">
             <Heading as="h3" mb={8} size="lg" color="teal">Your favorite movies:</Heading>
-            <Watchlist backButton="false" deleteButton="false" />
+            <Watchlist backButton="false" deleteButton="false" limitW={3} />
           </Box>
-          <Box>
+          <Box pt={8} borderTopColor="teal" borderTopWidth="1px">
             <Heading as="h3" mb={8} size="lg" color="teal">Watched movies:</Heading>
             <History limitH={3} searchRefreshButtons="false"/>
           </Box>

@@ -101,6 +101,8 @@ export default function Watchlist(props) {
     return `${h}h ${m}min`;
   }
 
+  const limitW = props.limitW ? props.limitW : selected.length;
+
   // React.useEffect(() => {
   //   if(props.recommended === "true") {
   //     const movieCopy = [...movies];
@@ -138,7 +140,7 @@ export default function Watchlist(props) {
         </HStack>
       )}
       <SimpleGrid minChildWidth={200} spacing={30}>
-        {selected.map(movie => (
+        {selected.slice(0, limitW).map(movie => (
           <Box p={2}>
             <Box as={Link} to={`/movies/${movie.movieId}`} key={movie.id} pos="relative" noOfLines={2}>
               <Badge p={1} variant="solid" borderWidth="1px" borderRadius="md" colorScheme="teal" pos="absolute" top={2} left={2}>
