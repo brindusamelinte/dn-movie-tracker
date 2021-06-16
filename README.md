@@ -191,10 +191,11 @@ Acum să trecem la muncă.
     să modifici design-ul. Iar pentru sortare, ne vom folosi de data când a fost privit
     ✂~~
 
-12. Implementează funcția de recomandări filme - afișează 3 filme random din lista de favorite. O să
+~~✂️12. Implementează funcția de recomandări filme - afișează 3 filme random din lista de favorite. O să
     ai nevoie de un buton de actualizare listă, în caz că utilizatorului nu-i plac recomandările. Nu
     afișa filmele favorite deja privite. Lasă utilizatorul să poată șterge un film din favorite
-    direct din această pagină.
+    direct din această pagină.✂~~
+   
 13. Completează homepage-ul cu o căutare rapidă (câmpul de căutare și 3 filme/seriale), ultimele 3
     privite, ultimele 3 favorite, o recomandare cu un singur film. Poți refolosi bucăți de UI prin
     componente, sunt ca funcțiile, doar că pentru UI. Dacă nu știi cum să afișezi informațiile, eu

@@ -26,8 +26,6 @@ export default function Watchlist(props) {
 
   const [selected, setSelected] = React.useState([]);
 
-  // const [deleteFavorite, setDeleteFavorite] = React.useState("false");
-
   const selectMovies = (movies) => {
     if(props.recommended === "true") {
       const unwatchedMovies = movies.filter(movie => {
@@ -38,7 +36,7 @@ export default function Watchlist(props) {
 
       const randomMovies = [];
 
-      for(let i=0; i<3; i++) {
+      for(let i=0; i < props.limitR; i++) {
         const randomIndex = Math.floor(Math.random() * movieCopy.length);
         if(movieCopy.length === 0) {
           break;
@@ -127,16 +125,18 @@ export default function Watchlist(props) {
 
   return (
     <Container p={3} maxW="80em">
-      <HStack mb={3} justify="space-between">
-          <IconButton
-            aria-label="Back"
-            icon={<ChevronLeftIcon />}
-            variant="outline"
-            fontSize={36}
-            colorScheme="teal"
-            onClick={history.goBack}
-          />
+      {props.backButton !== "false" && (
+        <HStack mb={3} justify="space-between">
+            <IconButton
+              aria-label="Back"
+              icon={<ChevronLeftIcon />}
+              variant="outline"
+              fontSize={36}
+              colorScheme="teal"
+              onClick={history.goBack}
+            />
         </HStack>
+      )}
       <SimpleGrid minChildWidth={200} spacing={30}>
         {selected.map(movie => (
           <Box p={2}>
@@ -146,19 +146,22 @@ export default function Watchlist(props) {
               </Badge>
               <Tooltip label={movie.title}>
                 <Image
-                  src={buildImageUrl(movie.posterPath, 'w92')}
+                  src={buildImageUrl(movie.posterPath, 'w300')}
                   alt="Poster"
                   borderWidth="1px" 
                   borderRadius="lg"
                   fallbackSrc={imageFallback}
+                  objectFit="cover"
                 />
               </Tooltip>
             </Box>
+            {props.deleteButton !== "false" && (
             <Box pb={10}>
               <Box position="relative">
                 <IconButton onClick={() => deleteMovie(movie, movie.movieId)} aria-label="Delete Favorite" colorScheme="teal" icon={<DeleteIcon />} pos="absolute" top={2} right={2} />
               </Box>
             </Box>
+            )}
             <Box py={4} fontWeight="semibold">
               <Text as="span">{movie.title} </Text>
               <Text as="span" color="GrayText">({movie.year})</Text>

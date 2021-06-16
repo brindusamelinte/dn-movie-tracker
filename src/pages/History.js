@@ -31,7 +31,7 @@ import { buildHistoryApiUrl } from '../connectors/api';
 import { useQuery } from 'react-query';
 
 
-export default function History() {
+export default function History(props) {
   const history = useHistory();
 
   const [order, setOrder] = React.useState('asc');  
@@ -86,6 +86,7 @@ export default function History() {
   // console.log(order);
   return (
     <Container p={3} maxW="80em">
+      {props.searchRefreshButtons !== "false" && (
       <HStack mb={3} justify="space-between">
         <IconButton
           aria-label="Back"
@@ -107,6 +108,7 @@ export default function History() {
           </MenuList>
         </Menu>
       </HStack>
+      )}
       <VStack divider={<StackDivider borderColor="gray.300" />} spacing={4} align="stretch">
         {movies.sort((x,y) => {
           const a = Date.parse(x.watchAt);

@@ -16,7 +16,7 @@ export default function Search() {
   );
 
   if (isIdle) {
-    return <Text>Type some terms and submit for a quick search</Text>;
+    return null;
   }
   if (isLoading) {
     return <Progress size="xs" isIndeterminate />;

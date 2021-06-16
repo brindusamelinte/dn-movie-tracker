@@ -5,7 +5,7 @@ import Watchlist from './Watchlist';
 import { buildHistoryApiUrl } from '../connectors/api';
 import { useQuery } from 'react-query';
 
-export default function Recommendations() {
+export default function Recommendations(props) {
   const [refresh, setRefresh] = React.useState(0);
 
   const { 
@@ -36,13 +36,14 @@ export default function Recommendations() {
     );
   }
 
+  const limitR = props.limitR ? props.limitR : 3;
 
   return (  
     <Container p={3} maxW="50em">
-      <Box w="70vw" display="flex" justifyContent="flex-end">
+      <Box w="70vw" display="flex" justifyContent="flex-start">
         <IconButton onClick={() => setRefresh(refresh + 1)} aria-label="Repeat" colorScheme="teal" icon={<RepeatIcon/>} />
       </Box>
-      <Watchlist recommended="true" watchedMovies={movies.map(movie => movie.movieId)} key={refresh} />
+      <Watchlist limitR={limitR} recommended="true" backButton="false" watchedMovies={movies.map(movie => movie.movieId)} key={refresh} />
     </Container>
   );
 }
