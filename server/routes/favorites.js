@@ -45,7 +45,7 @@ router.post('/', async (req, res) => {
                 movieId: req.body.movieId,
                 email: req.body.email,
                 date: new Date(),
-                movie: movie._id
+                movie: movie._id,
             });
             res.send(favoriteMovie);
         } else {
@@ -57,8 +57,8 @@ router.post('/', async (req, res) => {
 });
 
 
-router.delete('/:movieId/:email', async (req, res) => {
-    await Favorite.findOneAndDelete({ 
+router.delete('/:movieId/:email', (req, res) => {
+    Favorite.findOneAndDelete({ 
         movieId: req.params.movieId,
         email: req.params.email
     }, (err, doc) => {

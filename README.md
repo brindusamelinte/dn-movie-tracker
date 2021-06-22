@@ -169,30 +169,38 @@ Acum să trecem la muncă.
 
 ## Sarcini pentru UI (React)
 
-7. Completează pagina Search cu mai multe informații (popularitatea, ratingul, posterul, orice
+~~✂️7. Completează pagina Search cu mai multe informații (popularitatea, ratingul, posterul, orice
    altceva ți se pare interesant). Adaptează design-ul. înlocuiește call-ul către TMDB cu unul către
-   API-ul propriu (cel scris în express)
-8. Completeaza pagina unui film cu mai multe informații (backdrop, genres, link to imdb, durata,
+   API-ul propriu (cel scris în express)✂~~
+   
+~~✂️8. Completeaza pagina unui film cu mai multe informații (backdrop, genres, link to imdb, durata,
    profit, rating, orice altceva ți se pare interesant). Adaptează design-ul. înlocuiește call-ul
-   către TMDB cu unul către API-ul propriu
-9. Pe pagina unui film există 2 acțiuni - adaugă la favorite și adaugă în istoric. Prima este deja
+   către TMDB cu unul către API-ul propriu)✂~~
+   
+~~✂️9. Pe pagina unui film există 2 acțiuni - adaugă la favorite și adaugă în istoric. Prima este deja
    implementată, dar trebuie legată de ruta corespunzătoare. A doua acțiune trebuie să o
    implementezi tu (adaugă în istoric, care la click, face un request către server, care va salva
-   starea nouă în BD, asemănător cu istoricul)
-10. Acum că avem funcționalitatea de a adăuga în istoric, să o îmbunătățim cu data când a fost
+   starea nouă în BD, asemănător cu istoricul)✂~~
+   
+~~✂️10. Acum că avem funcționalitatea de a adăuga în istoric, să o îmbunătățim cu data când a fost
     salvat. Și dacă utilizatorul a privit filmul în altă zi? Pentru asta mai adaugă și opțiunea de a
     schimba data. Oare putem privi un film care încă nu a fost lansat?
-11. Afișează istoricul în pagina corespunzătoare. Poți să te inspiri de la pagina de favorite, dar
+    ✂~~
+    
+~~✂️11. Afișează istoricul în pagina corespunzătoare. Poți să te inspiri de la pagina de favorite, dar
     să modifici design-ul. Iar pentru sortare, ne vom folosi de data când a fost privit
-12. Implementează funcția de recomandări filme - afișează 3 filme random din lista de favorite. O să
+    ✂~~
+
+~~✂️12. Implementează funcția de recomandări filme - afișează 3 filme random din lista de favorite. O să
     ai nevoie de un buton de actualizare listă, în caz că utilizatorului nu-i plac recomandările. Nu
     afișa filmele favorite deja privite. Lasă utilizatorul să poată șterge un film din favorite
-    direct din această pagină.
-13. Completează homepage-ul cu o căutare rapidă (câmpul de căutare și 3 filme/seriale), ultimele 3
+    direct din această pagină.✂~~
+   
+~~✂️13. Completează homepage-ul cu o căutare rapidă (câmpul de căutare și 3 filme/seriale), ultimele 3
     privite, ultimele 3 favorite, o recomandare cu un singur film. Poți refolosi bucăți de UI prin
     componente, sunt ca funcțiile, doar că pentru UI. Dacă nu știi cum să afișezi informațiile, eu
     aș împărți pagina în 2: în dreapta afișez recomandarea cu ce să privești, iar în stânga, una sub
-    alta: search, watchlist, history. Provocarea e să arate bine.
+    alta: search, watchlist, history. Provocarea e să arate bine.✂~~
 
 ## După ce ai terminat sarcinile,
 

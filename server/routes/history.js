@@ -10,7 +10,9 @@ router.get('/:email', async (req, res) => {
         .find({ email: req.params.email })
         .populate('movie')
         .then(histories => {
-            const historyMovies = histories.map(history => history.movie);
+            const historyMovies = histories.map(history => {
+                return { ...history.movie.toObject(), watchAt: history.date.toDateString() };
+            });
             res.send(historyMovies);
         })
 });
@@ -46,6 +48,7 @@ router.post('/', async (req, res) => {
                 date: req.body.date,
                 movie: movie._id
             });
+
             res.send(historyMovie);
         } else if(req.body.date) {
             await History.updateOne({
@@ -68,8 +71,8 @@ router.post('/', async (req, res) => {
 });
 
 
-router.delete('/:movieId/:email', async (req, res) => {
-    await History.findOneAndDelete({
+router.delete('/:movieId/:email', (req, res) => {
+   History.findOneAndDelete({
         movieId: req.params.movieId,
         email: req.params.email
     }, (err, doc) => {
